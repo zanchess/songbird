@@ -1,0 +1,16 @@
+.quiz__header{
+    height: 70px;
+    width: 100%;
+    background-color: #20272F;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10px;
+    color: whitesmoke;
+    align-items: center;
+
+    .header__logo{
+        font-size: 26px;
+        font-weight: bold;
+    }
+}
