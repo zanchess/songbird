@@ -1,11 +1,15 @@
 import React from 'react';
 import Header from './Header/Header';
+import birdsData from '../constants/data';
+import categories from '../constants/categories';
+import Categories from './Categories/Categories';
 
 class Quiz extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
+      birdsData,
+      categories,
       score: 0,
     };
   }
@@ -15,6 +19,7 @@ class Quiz extends React.Component {
     return (
       <>
         <Header score={this.state.score} />
+        <Categories categories={this.state.categories} />
         <div className="quiz">
           {a}
         </div>
