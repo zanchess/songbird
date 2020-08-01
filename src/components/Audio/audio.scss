@@ -1,0 +1,12 @@
+.audio__wrap{
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 80%;
+  margin: 10px auto;
+
+  .audio__player{
+    margin-left: 40px;
+    width: calc(100% - 100px);
+  }
+}

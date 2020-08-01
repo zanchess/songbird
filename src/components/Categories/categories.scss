@@ -7,19 +7,19 @@
     margin-top: 30px;
 
     :first-child{
-        border-radius: 5px 0 0 5px;
+      border-radius: 5px 0 0 5px;
     }
 
     :last-child{
-        border-radius: 0 5px 5px 0;
+      border-radius: 0 5px 5px 0;
     }
 
     li{
-        width: 100px;
-        text-align: center;
-        height: 40px;
-        border: 1px solid black;
-        padding-top: 7px;
-        cursor: pointer;
+			width: 100px;
+			text-align: center;
+			height: 40px;
+			border: 1px solid black;
+			padding-top: 7px;
+			cursor: pointer;
     }
 }
