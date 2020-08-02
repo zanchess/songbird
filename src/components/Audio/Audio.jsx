@@ -9,6 +9,10 @@ const Audio = () => (
       <img src="" alt="bird" />
     </div>
     <div className="audio__player">
+      <div className="audio__need-bird">
+        <span>***</span>
+      </div>
+      <hr />
       <AudioPlayer />
     </div>
   </div>

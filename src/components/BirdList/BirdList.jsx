@@ -1,12 +1,20 @@
 import React from 'react';
 import './birds.scss';
 
-const BirdList = (props) => (
-  <>
-    <ul className="birds">
-      {props.data[props.page].map((elem) => <li key={elem.id}>{elem.name}</li>)}
-    </ul>
-  </>
-);
+const BirdList = (props) => {
+  console.log(props);
+  if (props.data) {
+    return (
+      <>
+        <ul className="birds" onClick={props.showBird}>
+          {props.data.map((elem) => <li key={elem.id} data-set={elem.name}>{elem.name}</li>)}
+        </ul>
+      </>
+    );
+  }
+  return (
+    <h3>Список</h3>
+  );
+};
 
 export default BirdList;
