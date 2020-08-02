@@ -7,7 +7,7 @@ const BirdList = (props) => {
     return (
       <>
         <ul className="birds" onClick={props.showBird}>
-          {props.data.map((elem) => <li key={elem.id} data-set={elem.name}>{elem.name}</li>)}
+          {props.data.map((elem) => <li key={elem.id} data-id={elem.id}>{elem.name}</li>)}
         </ul>
       </>
     );

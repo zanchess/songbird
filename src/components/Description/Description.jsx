@@ -9,21 +9,22 @@ const Description = (props) => {
       <>
         <div className="descr">
           <div className="descr__head">
-            <img src="" alt="bird" />
+            <img src={props.data.image} alt="bird" />
             <h3 className="descr__h">
-              {props.data[props.page].name}
+              {props.data.name}
             </h3>
             <h5>
-              {props.data[props.page].specied}
+              {props.data.specied}
             </h5>
             <hr />
             <AudioPlayer
-              src={props.data[props.page].audio}
+              src={props.data.audio}
+              autoPlayAfterSrcChange={false}
             />
           </div>
           <div className="descr__text">
             <p>
-              {props.data[props.page].description}
+              {props.data.description}
             </p>
           </div>
         </div>

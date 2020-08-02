@@ -54,8 +54,14 @@ class Quiz extends React.Component {
   }
 
   showClickedBird = (e) => {
-    const bird = e.target.getAttribute('data-set');
-    console.log(bird);
+    const birdId = e.target.getAttribute('data-id');
+    this.state.birdsList.forEach((element) => {
+      if (+birdId === element.id) {
+        this.setState({
+          currentBird: element,
+        });
+      }
+    });
   }
 
   render() {
@@ -71,7 +77,7 @@ class Quiz extends React.Component {
               data={this.state.birdsList}
               page={this.state.page}
             />
-            <Description data={this.state.birdsList} page={this.state.page} />
+            <Description data={this.state.currentBird} page={this.state.page} />
           </div>
           <button>Next Level</button>
         </div>
