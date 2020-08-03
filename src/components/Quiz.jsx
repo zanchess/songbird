@@ -22,19 +22,19 @@ const randomInteger = (min, max) => {
   return Math.round(rand);
 };
 
+const minVaArrValue = 0;
+
 class Quiz extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      birdsData: null,
       birdsList: null,
       currentBird: null,
+      needBird: null,
       categories,
       score: 0,
       page: 0,
       truthAnswer: false,
-      clickedBirdList: false,
-
     };
   }
 
@@ -45,12 +45,13 @@ class Quiz extends React.Component {
   setBirds = async () => {
     const birds = await birdsData;
     const currentBirds = await getShuffledArr(birds[this.state.page]);
+    const currentBirdIndex = randomInteger(minVaArrValue, currentBirds.length - 1);
+
     await this.setState({
       birdsData: birds,
       birdsList: currentBirds,
+      needBird: currentBirds[currentBirdIndex],
     });
-    await console.log(this.state.birdsList);
-    await console.log(this.state.birdsData);
   }
 
   showClickedBird = (e) => {
@@ -61,6 +62,9 @@ class Quiz extends React.Component {
           currentBird: element,
         });
       }
+      if (+birdId === this.state.needBird.id) {
+        console.log('yes');
+      }
     });
   }
 
@@ -70,7 +74,7 @@ class Quiz extends React.Component {
         <div className="quiz">
           <Header score={this.state.score} />
           <Categories categories={this.state.categories} />
-          <Audio />
+          <Audio bird={this.state.needBird} answer={this.state.truthAnswer} />
           <div className="birds__wrap">
             <BirdList
               showBird={this.showClickedBird}
