@@ -9,6 +9,8 @@ const Header = (props) => (
       </div>
       <div className="header__score">
         <span>
+          Score:
+          {' '}
           {props.score}
         </span>
       </div>

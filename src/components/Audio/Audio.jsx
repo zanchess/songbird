@@ -2,15 +2,16 @@ import React from 'react';
 import './audio.scss';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import unknownBird from '../../assets/images/bird.jpg';
 
 const Audio = (props) => {
-  console.log(props);
   if (props.bird) {
+    const image = {
+      backgroundImage: props.answer ? `url${props.bird.image}` : 'url(./images/bird.jpg)',
+    };
     return (
       <div className="audio__wrap">
         <div className="audio__img">
-          <img src={props.answer ? props.bird.image : './images/bird.jpg'} alt="bird" />
+          <div className="audio__img" style={image} />
         </div>
         <div className="audio__player">
           <div className="audio__need-bird">

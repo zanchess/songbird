@@ -9,4 +9,12 @@
     margin-left: 40px;
     width: calc(100% - 100px);
   }
+
+  .audio__img{
+    width: 200px;
+    height: 200px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+  }
 }

@@ -12,14 +12,19 @@
 
     :last-child{
       border-radius: 0 5px 5px 0;
+      border-right: 1px solid black;
     }
 
     li{
-			width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+			width: 130px;
 			text-align: center;
-			height: 40px;
-			border: 1px solid black;
-			padding-top: 7px;
+			height: 46px;
+      border-left: 1px solid black;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
 			cursor: pointer;
     }
 }

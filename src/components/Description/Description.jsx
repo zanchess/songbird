@@ -5,11 +5,15 @@ import 'react-h5-audio-player/lib/styles.css';
 
 const Description = (props) => {
   if (props.data) {
+    const image = {
+      backgroundImage: `url(${props.data.image})`,
+    };
+
     return (
       <>
         <div className="descr">
           <div className="descr__head">
-            <img src={props.data.image} alt="bird" />
+            <div className="head__img" style={image} />
             <h3 className="descr__h">
               {props.data.name}
             </h3>

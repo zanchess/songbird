@@ -48,7 +48,6 @@ class Quiz extends React.Component {
     const currentBirdIndex = randomInteger(minVaArrValue, currentBirds.length - 1);
 
     await this.setState({
-      birdsData: birds,
       birdsList: currentBirds,
       needBird: currentBirds[currentBirdIndex],
     });
@@ -63,9 +62,40 @@ class Quiz extends React.Component {
         });
       }
       if (+birdId === this.state.needBird.id) {
-        console.log('yes');
+        this.trueAnswer();
       }
     });
+  }
+
+  trueAnswer = () => {
+    this.setState({
+      truthAnswer: true,
+    });
+  }
+
+  resetGame = () => {
+    this.setState({
+      truthAnswer: false,
+    });
+  }
+
+  nextPage = () => {
+    this.setState({
+      page: this.state.page + 1,
+    });
+  }
+
+  resetCurrentBird = () => {
+    this.setState({
+      currentBird: null,
+    });
+  }
+
+  nextLevel = () => {
+    this.resetGame();
+    this.nextPage();
+    this.setBirds();
+    this.resetCurrentBird();
   }
 
   render() {
@@ -73,7 +103,7 @@ class Quiz extends React.Component {
       <>
         <div className="quiz">
           <Header score={this.state.score} />
-          <Categories categories={this.state.categories} />
+          <Categories categories={this.state.categories} page={this.state.page} />
           <Audio bird={this.state.needBird} answer={this.state.truthAnswer} />
           <div className="birds__wrap">
             <BirdList
@@ -83,7 +113,7 @@ class Quiz extends React.Component {
             />
             <Description data={this.state.currentBird} page={this.state.page} />
           </div>
-          <button>Next Level</button>
+          <button onClick={this.nextLevel} disabled={!this.state.truthAnswer}>Next Level</button>
         </div>
       </>
 
