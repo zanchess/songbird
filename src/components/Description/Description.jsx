@@ -37,9 +37,11 @@ const Description = (props) => {
   }
   return (
     <>
-      <h3>
-        Птица
-      </h3>
+      <div className="descr">
+        <h3>
+          Описание птицы
+        </h3>
+      </div>
     </>
   );
 };

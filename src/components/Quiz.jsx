@@ -35,6 +35,7 @@ class Quiz extends React.Component {
       score: 0,
       page: 0,
       truthAnswer: false,
+      maxScore: 6,
     };
   }
 
@@ -64,6 +65,7 @@ class Quiz extends React.Component {
       if (+birdId === this.state.needBird.id) {
         this.trueAnswer();
       }
+      console.log(1);
     });
   }
 
@@ -113,7 +115,7 @@ class Quiz extends React.Component {
             />
             <Description data={this.state.currentBird} page={this.state.page} />
           </div>
-          <button onClick={this.nextLevel} disabled={!this.state.truthAnswer}>Next Level</button>
+          <button className="quiz__btn" onClick={this.nextLevel} disabled={!this.state.truthAnswer}>Next Level</button>
         </div>
       </>
 
