@@ -36,7 +36,7 @@ class Quiz extends React.Component {
       page: 0,
       truthAnswer: false,
       endLevel: false,
-      clearList: true,
+      birdListIsClear: true,
       maxScore: 5,
     };
   }
@@ -56,7 +56,20 @@ class Quiz extends React.Component {
     });
   }
 
+  resetBirdList = () => {
+    this.setState({
+      birdListIsClear: true,
+    });
+  }
+
+  clickedBirdList = () => {
+    this.setState({
+      birdListIsClear: false,
+    });
+  }
+
   showClickedBird = (e) => {
+    this.clickedBirdList();
     const birdId = e.target.getAttribute('data-id');
     this.state.birdsList.forEach((element) => {
       if (+birdId === element.id) {
@@ -131,18 +144,13 @@ class Quiz extends React.Component {
     });
   }
 
-  clearList = () => {
-    this.setState({
-      clearList: true,
-    });
-  }
-
   nextLevel = () => {
-    this.resetGame();
     this.nextPage();
+    this.resetGame();
     this.setBirds();
     this.resetCurrentBird();
     this.resetEndGame();
+    this.resetBirdList();
   }
 
   render() {
@@ -154,7 +162,7 @@ class Quiz extends React.Component {
           <Audio bird={this.state.needBird} answer={this.state.truthAnswer} />
           <div className="birds__wrap">
             <BirdList
-              clearList={this.state.clearList}
+              clearList={this.state.birdListIsClear}
               endLevel={this.state.endLevel}
               showBird={this.showClickedBird}
               data={this.state.birdsList}

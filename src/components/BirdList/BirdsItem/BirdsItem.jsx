@@ -10,23 +10,33 @@ class BirdsItem extends React.Component {
     };
   }
 
+  componentDidUpdate = (prevProps) => {
+    if (prevProps.clearList !== this.props.clearList) {
+      this.resetItem();
+    }
+  }
+
+  resetItem = () => {
+    this.setState({
+      background: 'grey',
+      answered: false,
+    });
+  }
+
   checkItem = () => {
     setTimeout(() => {
-      if (this.props.clearList) {
-        this.setState({
-          background: 'grey',
-        });
-      }
       if (!this.state.answered && !this.props.truth && !this.props.endLevel) {
         this.setState({
           background: 'red',
         });
+        console.log('red');
       }
       if (!this.state.answered && this.props.truth && !this.props.endLevel) {
         this.setState({
           background: 'green',
           answered: true,
         });
+        console.log('green');
       }
     }, 0);
   }
