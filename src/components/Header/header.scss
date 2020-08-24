@@ -12,7 +12,21 @@
     padding-right: 40px;
 
     .header__logo{
-        font-size: 26px;
-        font-weight: bold;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    h1{
+			font-family: 'Londrina Solid', cursive;
+			color: rgb(185, 94, 94);
+			
+			span{
+				color: rgb(112, 189, 135);
+			}
+    }
+
+    .header__score{
+      font-family: 'Londrina Solid', cursive;
+      font-size: 24px;
     }
 }

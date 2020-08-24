@@ -3,10 +3,10 @@ import './categories.scss';
 
 const Categories = (props) => {
   const active = {
-    backgroundColor: 'green',
+    backgroundColor: '#5c5c5c',
   };
   const notActive = {
-    backgroundColor: 'red',
+    backgroundColor: '#919191',
   };
   return (
     <>

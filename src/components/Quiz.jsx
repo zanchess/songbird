@@ -35,7 +35,9 @@ class Quiz extends React.Component {
       score: 0,
       page: 0,
       truthAnswer: false,
-      maxScore: 6,
+      endLevel: false,
+      clearList: true,
+      maxScore: 5,
     };
   }
 
@@ -64,8 +66,36 @@ class Quiz extends React.Component {
       }
       if (+birdId === this.state.needBird.id) {
         this.trueAnswer();
+        this.endLevel();
+        this.addLevelScore();
       }
-      console.log(1);
+    });
+
+    if (!this.state.endLevel) {
+      this.minusScore();
+    }
+  }
+
+  minusScore = () => {
+    this.setState({
+      maxScore: this.state.maxScore - 1,
+    });
+
+    console.log(this.state.maxScore);
+  }
+
+  addLevelScore = () => {
+    const currentScore = this.state.maxScore;
+    this.setState({
+      score: this.state.score + currentScore,
+    });
+  }
+
+  resetEndGame = () => {
+    this.setState({
+      truthAnswer: false,
+      endLevel: false,
+      maxScore: 5,
     });
   }
 
@@ -73,6 +103,14 @@ class Quiz extends React.Component {
     this.setState({
       truthAnswer: true,
     });
+  }
+
+  endLevel = () => {
+    setTimeout(() => {
+      this.setState({
+        endLevel: true,
+      });
+    }, 10);
   }
 
   resetGame = () => {
@@ -93,11 +131,18 @@ class Quiz extends React.Component {
     });
   }
 
+  clearList = () => {
+    this.setState({
+      clearList: true,
+    });
+  }
+
   nextLevel = () => {
     this.resetGame();
     this.nextPage();
     this.setBirds();
     this.resetCurrentBird();
+    this.resetEndGame();
   }
 
   render() {
@@ -109,9 +154,12 @@ class Quiz extends React.Component {
           <Audio bird={this.state.needBird} answer={this.state.truthAnswer} />
           <div className="birds__wrap">
             <BirdList
+              clearList={this.state.clearList}
+              endLevel={this.state.endLevel}
               showBird={this.showClickedBird}
               data={this.state.birdsList}
               page={this.state.page}
+              truth={this.state.truthAnswer}
             />
             <Description data={this.state.currentBird} page={this.state.page} />
           </div>

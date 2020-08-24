@@ -1,14 +1,22 @@
 import React from 'react';
 import './birds.scss';
-import BirdsItem from './BirdsItem';
+import BirdsItem from './BirdsItem/BirdsItem';
 
 const BirdList = (props) => {
-  console.log(props);
   if (props.data) {
     return (
       <>
         <ul className="birds" onClick={props.showBird}>
-          {props.data.map((elem) => <BirdsItem key={elem.id} data={elem.id} name={elem.name} />)}
+          {props.data.map((elem) => (
+            <BirdsItem
+              clearList={props.clearList}
+              endLevel={props.endLevel}
+              truth={props.truth}
+              key={elem.id}
+              data={elem.id}
+              name={elem.name}
+            />
+          ))}
         </ul>
       </>
     );
