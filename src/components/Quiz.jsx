@@ -171,7 +171,8 @@ class Quiz extends React.Component {
             />
             <Description data={this.state.currentBird} page={this.state.page} />
           </div>
-          <button className="quiz__btn" onClick={this.nextLevel} disabled={!this.state.truthAnswer}>Next Level</button>
+          <hr />
+          <button className="quiz__btn" onClick={this.nextLevel} disabled={!this.state.truthAnswer}>Следующий уровень</button>
         </div>
       </>
 
