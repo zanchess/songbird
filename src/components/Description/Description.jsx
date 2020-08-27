@@ -39,9 +39,12 @@ const Description = (props) => {
   return (
     <>
       <div className="descr">
-        <h3>
-          Описание птицы
-        </h3>
+        <h5>
+          Пслушайте аудиозапись
+          {' '}
+          <br />
+          Угадайте название
+        </h5>
       </div>
     </>
   );

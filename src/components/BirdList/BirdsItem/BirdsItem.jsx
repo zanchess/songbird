@@ -6,7 +6,7 @@ class BirdsItem extends React.Component {
     super(props);
     this.state = {
       answered: null,
-      background: 'grey',
+      background: 'whitesmoke',
     };
   }
 
@@ -18,25 +18,27 @@ class BirdsItem extends React.Component {
 
   resetItem = () => {
     this.setState({
-      background: 'grey',
+      background: 'whitesmoke',
       answered: false,
     });
   }
 
-  checkItem = () => {
+  checkItem = async () => {
     setTimeout(() => {
       if (!this.state.answered && !this.props.truth && !this.props.endLevel) {
         this.setState({
           background: 'red',
+          answered: true,
         });
-        console.log('red');
+        this.props.minusScore();
+        new Audio('/audio/error.mp3').play();
       }
       if (!this.state.answered && this.props.truth && !this.props.endLevel) {
         this.setState({
           background: 'green',
           answered: true,
         });
-        console.log('green');
+        this.props.minusScore();
       }
     }, 0);
   }

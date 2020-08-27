@@ -9,6 +9,9 @@ const BirdList = (props) => {
         <ul className="birds" onClick={props.showBird}>
           {props.data.map((elem) => (
             <BirdsItem
+              errors={props.errors}
+              notError={props.notError}
+              minusScore={props.minusScore}
               clearList={props.clearList}
               endLevel={props.endLevel}
               truth={props.truth}
@@ -18,6 +21,7 @@ const BirdList = (props) => {
             />
           ))}
         </ul>
+        <audio src="/audio/ding.mp3" />
       </>
     );
   }

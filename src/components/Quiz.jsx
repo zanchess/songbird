@@ -38,6 +38,9 @@ class Quiz extends React.Component {
       endLevel: false,
       birdListIsClear: true,
       maxScore: 5,
+      errors: new Audio('/audio/windows-error.mp3'),
+      notError: new Audio('/audio/ding.mp3'),
+
     };
   }
 
@@ -83,18 +86,13 @@ class Quiz extends React.Component {
         this.addLevelScore();
       }
     });
-
-    if (!this.state.endLevel) {
-      this.minusScore();
-    }
   }
 
-  minusScore = () => {
-    this.setState({
+  minusScore = async () => {
+    await this.setState({
       maxScore: this.state.maxScore - 1,
     });
-
-    console.log(this.state.maxScore);
+    await console.log(this.state.maxScore);
   }
 
   addLevelScore = () => {
@@ -162,12 +160,15 @@ class Quiz extends React.Component {
           <Audio bird={this.state.needBird} answer={this.state.truthAnswer} />
           <div className="birds__wrap">
             <BirdList
+              minusScore={this.minusScore}
               clearList={this.state.birdListIsClear}
               endLevel={this.state.endLevel}
               showBird={this.showClickedBird}
               data={this.state.birdsList}
               page={this.state.page}
               truth={this.state.truthAnswer}
+              errors={this.state.errors}
+              notError={this.state.notError}
             />
             <Description data={this.state.currentBird} page={this.state.page} />
           </div>
