@@ -7,6 +7,7 @@ import Audio from './Audio/Audio';
 import BirdList from './BirdList/BirdList';
 import Description from './Description/Description';
 import './quiz.scss';
+import Result from './Results/Results';
 
 const getShuffledArr = (arr) => {
   const newArr = arr.slice();
@@ -40,6 +41,7 @@ class Quiz extends React.Component {
       maxScore: 5,
       errors: new Audio('/audio/windows-error.mp3'),
       notError: new Audio('/audio/ding.mp3'),
+      modalStatus: false,
 
     };
   }
@@ -81,9 +83,16 @@ class Quiz extends React.Component {
         });
       }
       if (+birdId === this.state.needBird.id) {
-        this.trueAnswer();
-        this.endLevel();
-        this.addLevelScore();
+        if (this.state.page < 1) {
+          this.trueAnswer();
+          this.endLevel();
+          this.addLevelScore();
+        } else {
+          this.trueAnswer();
+          this.endLevel();
+          this.addLevelScore();
+          this.showModal();
+        }
       }
     });
   }
@@ -124,6 +133,12 @@ class Quiz extends React.Component {
     }, 10);
   }
 
+  resetScore = () => {
+    this.setState({
+      score: 0,
+    });
+  }
+
   resetGame = () => {
     this.setState({
       truthAnswer: false,
@@ -136,10 +151,35 @@ class Quiz extends React.Component {
     });
   }
 
+  resetPage = () => {
+    this.setState({
+      page: 0,
+    });
+  }
+
   resetCurrentBird = () => {
     this.setState({
       currentBird: null,
     });
+  }
+
+  showModal = () => {
+    this.setState({
+      modalStatus: true,
+    });
+  }
+
+  hideModal = () => {
+    this.setState({
+      modalStatus: false,
+    });
+    this.resetPage();
+    this.resetGame();
+    this.setBirds();
+    this.resetCurrentBird();
+    this.resetEndGame();
+    this.resetBirdList();
+    this.resetScore();
   }
 
   nextLevel = () => {
@@ -175,6 +215,11 @@ class Quiz extends React.Component {
           <hr />
           <button className="quiz__btn" onClick={this.nextLevel} disabled={!this.state.truthAnswer}>Следующий уровень</button>
         </div>
+        <Result
+          show={this.state.modalStatus}
+          score={this.state.score}
+          onHide={this.hideModal}
+        />
       </>
 
     );
