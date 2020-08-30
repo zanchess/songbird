@@ -6,6 +6,7 @@
     align-items: center;
     margin-top: 30px;
     color: white;
+    padding-left: 0;
 
     :first-child{
       border-radius: 5px 0 0 5px;
@@ -33,4 +34,30 @@
     li:last-child{
       border-right: none;
     }
+}
+
+@media screen and (max-width: 990px){
+  .categories{
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 8px;
+
+    li{
+      width: 100%;
+      border-left: none;
+    }
+
+    :first-child{
+      border-radius: 8px 8px 0 0;
+    }
+
+    :last-child{
+      border-radius: 0 0 8px 8px;
+      border-right: none;
+    }
+
+  }
 }

@@ -217,8 +217,8 @@ class Quiz extends React.Component {
           score={this.state.score}
           onHide={this.hideModal}
         />
-        <audio className="yes" src="/images/ding.mp3" />
-        <audio className="no" src="/images/error.mp3" />
+        <audio className="no" src="/images/ding.mp3" />
+        <audio className="yes" src="/images/error.mp3" />
       </>
 
     );

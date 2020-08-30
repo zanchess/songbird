@@ -7,6 +7,7 @@
   padding: 20px;
   min-height: 350px;
   background-color: rgba(98, 98, 98, 0.52);
+  margin-right: 20px;
 
   .descr__head{
     display: flex;
@@ -27,5 +28,13 @@
       width: 80%;
       margin-left: 20px;
     }
+  }
+}
+
+@media screen and (max-width: 990px){
+
+  .descr{
+    margin-right: 0;
+    width: 90%;
   }
 }
