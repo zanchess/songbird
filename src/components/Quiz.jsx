@@ -39,8 +39,6 @@ class Quiz extends React.Component {
       endLevel: false,
       birdListIsClear: true,
       maxScore: 5,
-      errors: new Audio('/audio/windows-error.mp3'),
-      notError: new Audio('/audio/ding.mp3'),
       modalStatus: false,
 
     };
@@ -83,7 +81,7 @@ class Quiz extends React.Component {
         });
       }
       if (+birdId === this.state.needBird.id) {
-        if (this.state.page < 1) {
+        if (this.state.page < 5) {
           this.trueAnswer();
           this.endLevel();
           this.addLevelScore();
@@ -101,7 +99,6 @@ class Quiz extends React.Component {
     await this.setState({
       maxScore: this.state.maxScore - 1,
     });
-    await console.log(this.state.maxScore);
   }
 
   addLevelScore = () => {
@@ -220,6 +217,8 @@ class Quiz extends React.Component {
           score={this.state.score}
           onHide={this.hideModal}
         />
+        <audio className="yes" src="/images/ding.mp3" />
+        <audio className="no" src="/images/error.mp3" />
       </>
 
     );

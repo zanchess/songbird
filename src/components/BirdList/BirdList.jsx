@@ -21,7 +21,6 @@ const BirdList = (props) => {
             />
           ))}
         </ul>
-        <audio src="/audio/ding.mp3" />
       </>
     );
   }

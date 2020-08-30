@@ -31,7 +31,7 @@ class BirdsItem extends React.Component {
           answered: true,
         });
         this.props.minusScore();
-        new Audio('/audio/error.mp3').play();
+        document.getElementsByClassName('no')[0].play();
       }
       if (!this.state.answered && this.props.truth && !this.props.endLevel) {
         this.setState({
@@ -39,6 +39,7 @@ class BirdsItem extends React.Component {
           answered: true,
         });
         this.props.minusScore();
+        document.getElementsByClassName('yes')[0].play();
       }
     }, 0);
   }
