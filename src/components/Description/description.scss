@@ -27,6 +27,7 @@
     .descr__main{
       width: 80%;
       margin-left: 20px;
+      text-align: justify;
     }
   }
 }
@@ -37,4 +38,22 @@
     margin-right: 0;
     width: 90%;
   }
+}
+
+@media screen and (max-width: 500px){
+
+  .descr{
+    margin-right: 0;
+    width: 90%;
+
+    .descr__head{
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      .descr__main{
+        width: 95%;
+      }
+  }
+}
 }
