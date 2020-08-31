@@ -9,4 +9,44 @@
     margin-left: 40px;
     width: calc(100% - 100px);
   }
+
+  .audio__img{
+    width: 200px;
+    height: 200px;
+    background-position: center center;
+    background-size: cover;
+    border-radius: 5px;
+  }
+}
+
+@media screen and (max-width: 990px){
+
+  .audio__wrap{
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 700px){
+
+  .audio__wrap{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    .audio__player{
+      margin-left: 0;
+      width: calc(100% - 100px);
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+
+  .audio__wrap{
+
+    .audio__player{
+      margin-left: 0;
+      width: 95%;
+    }
+  }
 }

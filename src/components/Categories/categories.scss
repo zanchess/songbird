@@ -5,6 +5,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+    color: white;
+    padding-left: 0;
 
     :first-child{
       border-radius: 5px 0 0 5px;
@@ -12,14 +14,71 @@
 
     :last-child{
       border-radius: 0 5px 5px 0;
+      border-right: 1px solid black;
     }
 
     li{
-			width: 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+			width: 130px;
 			text-align: center;
-			height: 40px;
-			border: 1px solid black;
-			padding-top: 7px;
-			cursor: pointer;
+			height: 46px;
+      border-left: 1px solid black;
+      cursor: default;
     }
+
+    li:first-child{
+      border-left: none;
+    }
+    li:last-child{
+      border-right: none;
+    }
+}
+
+@media screen and (max-width: 990px){
+  .categories{
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 8px;
+
+    li{
+      width: 100%;
+      border-left: none;
+    }
+
+    :first-child{
+      border-radius: 8px 8px 0 0;
+    }
+
+    :last-child{
+      border-radius: 0 0 8px 8px;
+      border-right: none;
+    }
+
+  }
+}
+
+@media screen and (max-width: 500px){
+  .categories{
+    width: 90%;
+
+    li{
+      width: 100%;
+      border-left: none;
+    }
+
+    :first-child{
+      border-radius: 8px 8px 0 0;
+    }
+
+    :last-child{
+      border-radius: 0 0 8px 8px;
+      border-right: none;
+    }
+
+  }
 }
